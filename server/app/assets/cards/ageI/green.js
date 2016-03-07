@@ -1,0 +1,36 @@
+'use strict'
+module.exports = [{
+    name: "Workshop",
+    age: 1,
+    symbol: "A",
+    color: "Green",
+    cost: ['Papyrus'],
+    vp: 1,
+    arms: 0,
+}, {
+    name: "Apothecary",
+    age: 1,
+    symbol: "Wheel",
+    color: "Green",
+    cost: ['Glass'],
+    vp: 1,
+    arms: 0,
+}, {
+    name: "Scriptorium",
+    age: 1,
+    symbol: "Quill",
+    color: "Green",
+    cost: ['Gold', 'Gold'],
+    vp: 0,
+    arms: 0,
+    link: "Book",
+}, {
+    name: "Pharmacist",
+    age: 1,
+    symbol: "Mortar",
+    color: "Green",
+    cost: ['Gold', 'Gold'],
+    vp: 0,
+    arms: 0,
+    link: "Gear",
+}]
