@@ -16,10 +16,21 @@ app.factory('create', function($http, cardBuilder) {
       vp: 2
     }
 
-    // example of producing a card
-    var aCard = cardBuilder(game, sampleRed, 100, 150);
-    game.add.image(game.world.centerX, (game.world.centerY) / 2, aCard)
+    var sampleBlue = {
+      name: "Theater",
+      age: 1,
+      color: "Blue",
+      cost: [],
+      arms: 0,
+      link: "Mask",
+      vp: 3
+    }
 
+    // example of producing a card
+    var rCard = cardBuilder(game, sampleRed, 100, 150);
+    game.add.image(game.world.centerX, (game.world.centerY) / 2, rCard)
+    var bCard = cardBuilder(game, sampleBlue, 100, 150)
+    game.add.image(game.world.centerX + 120, (game.world.centerY) / 2, bCard)
   }
 
 })
