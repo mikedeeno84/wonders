@@ -5,10 +5,10 @@ module.exports = [{
     color: "Brown",
     cost: [],
     effect: {
-        result: [{
+        result: {
             quantity: 1,
             resource: "Wood"
-        }]
+        }
     },
     vp: 0,
     arms: 0,
@@ -18,10 +18,10 @@ module.exports = [{
     color: "Brown",
     cost: ['Gold'],
     effect: {
-        result: [{
+        result: {
             quantity: 1,
             resource: "Wood"
-        }]
+        }
     },
     vp: 0,
     arms: 0,
@@ -31,10 +31,10 @@ module.exports = [{
     color: "Brown",
     cost: [],
     effect: {
-        result: [{
+        result: {
             quantity: 1,
             resource: "Clay"
-        }]
+        }
     },
     vp: 0,
     arms: 0,
@@ -44,10 +44,10 @@ module.exports = [{
     color: "Brown",
     cost: ['Gold'],
     effect: {
-        result: [{
+        result: {
             quantity: 1,
             resource: "Clay"
-        }]
+        }
     },
     vp: 0,
     arms: 0,
@@ -57,10 +57,10 @@ module.exports = [{
     color: "Brown",
     cost: [],
     effect: {
-        result: [{
+        result: {
             quantity: 1,
             resource: "Stone"
-        }]
+        }
     },
     vp: 0,
     arms: 0,
@@ -72,10 +72,10 @@ module.exports = [{
     effect: {
         cost: 0,
         tradeOverride: false,
-        result: [{
+        result: {
             quantity: 1,
             resource: "Stone"
-        }]
+        }
     },
     vp: 0,
     arms: 0,
