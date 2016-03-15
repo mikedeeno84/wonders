@@ -10,7 +10,6 @@ app.factory('preload', function() {
     game.load.image('Clay', '/assets/clay.png');
     game.load.image('Papyrus', '/assets/papyrus.png');
     game.load.image('Glass', '/assets/glass.png');
-
-
+    game.load.image('Gold', '/assets/Gold.png');
   }
 })
