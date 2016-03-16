@@ -1,29 +1,80 @@
-// app.factory('yellowCardFactory', function(drawCost){
-// 	function yellowCard(gameCard, width, height, iconSize){
-// 		gameCard.ctx.beginPath();
-// 		gameCard.ctx.rect(0, 0, width, height)
-// 		gameCard.ctx.fillStyle = 'Yellow';
-// 		gameCard.ctx.fill();
-// 		gameCard.ctx.closePath();
-// 		var game = gameCard.game
-// 		var numArms = gameCard.cardInfo.arms;
-// 		var numVp = gameCard.cardInfo.vp;
-// 		if (numVp){ 
-// 			var vpText = game.make.text(0,0, numVp, 
-// 				{font: fontSize +"px serif", fill:'#1AA1FD'});
-// 			gameCard.draw(vpText, width/2 - iconSize/5, yOffset)
-// 		}
-// 		var yOffset = Math.floor((height - iconSize)/2)
-// 		var spacer = Math.floor((width - (3 * iconSize))/4);
-// 		var xOffset = spacer + iconSize;
-// 		var fontSize = 20;
-// 		var name = game.make.text(0,0, gameCard.cardInfo.name, 
-// 			{font: "bold "+ fontSize +"px", fill:'#1AA1FD'});
-// 		gameCard.draw(name, (width - name.width)/2, gameCard.height - gameCard.height/8);
-// 		gameCard.draw('Wreath', width/2 - (iconSize/2), yOffset, iconSize, iconSize)
-// 		if (cardInfo.cost.length) {
-// 			drawCost(gameCard, cardInfo.cost, width, height)
-// 		};
-// 	}
-// 	return yellowCard;
-// })
+app.factory('yellowCardFactory', function(shapeFactory, drawCost, drawFactory){
+	function yellowCard(gameCard, width, height, iconSize){
+		shapeFactory.drawHalfRound(gameCard, width, height, 0, 0, 6, 'yellow')
+		var game = gameCard.game;
+    var cardInfo = gameCard.cardInfo;
+		var numVp = cardInfo.vp;
+		var numIcons = 0;
+		var effects = {};
+		if (cardInfo.immediate){
+			numIcons++;
+			effects.gold = cardInfo.gold;
+		}
+		if (cardInfo.discount){
+			numIcons += cardInfo.discount.length;
+			effects.discount = cardInfo.discount;
+		}
+		if (cardInfo.special){
+			numIcons++;
+			effects.special = cardInfo.special;
+		}
+		if (cardInfo.supply){
+			numIcons += supply.length;
+			effects.supply = cardInfo.supply;
+		}
+		if (cardInfo.vp){
+			numIcons++;
+			effects.vp = cardInfo.vp;
+		}
+
+		var yOffset = Math.floor((height - iconSize)/2)
+		var spacer = Math.floor((width - (3 * iconSize))/4);
+		var xOffset = spacer + iconSize;
+		
+		Object.keys(effects).forEach(function(key){
+			if(key === 'gold'){
+				// draw gold
+				drawFactory.drawGold(gameCard, effects[key], xOffset, yOffset, iconSize)
+			}
+			else if(key === 'discount'){
+				// loop through supply in discount 'discount
+				effects[key].forEach(function(resource){
+					// print each resource
+					drawFactory.drawIcon(gameCard, resource, xOffset, yOffset, iconSize)
+					// Still need to print a 1
+					xOffset += (spacer + iconSize);
+				})
+
+
+			}	
+			else if(key=== 'special'){
+				// print special effects
+				// still need to get and register the icons for this step
+				// pyramid and miniature card with white outline
+				// with a gold coin on each
+			}
+			else if(key === 'supply'){
+				// print supplied resources
+				effects[key].forEach(function(resource){
+					drawFactory.drawIcon(gameCard, resource, xOffset, yOffset, iconSize)
+					// print a "/" between resources
+					xOffset += (spacer + iconSize);
+				})
+
+			}
+			else{
+				// print vp
+				drawFactory.drawVp(gameCard, width, height, iconSize);
+				xOffset += (spacer + iconSize);
+			
+			}
+
+
+		})
+
+		if (cardInfo.cost.length) {
+			drawCost(gameCard, cardInfo.cost, width, height)
+		};
+	}
+	return yellowCard;
+})

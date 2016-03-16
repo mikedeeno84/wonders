@@ -1,4 +1,4 @@
-app.factory('drawCost', function (shapeFactory) {
+app.factory('drawCost', function (shapeFactory, drawFactory) {
 	
 	function drawCost(gameCard, cost, width, height){
 		var miniIconSize = width/8;
@@ -17,28 +17,17 @@ app.factory('drawCost', function (shapeFactory) {
 			var resource = Object.keys(costMap)[i];
 			if (resource === 'Gold'){
 				// Draw Gold with number
-				drawGold(gameCard, costMap['Gold'], xOffset, yOffset, miniIconSize)
+				drawFactory.drawGold(gameCard, costMap['Gold'], xOffset, yOffset, miniIconSize)
 				xOffset += spacer + miniIconSize;
 			}
 			else{
 				for (var j = 0; j < costMap[resource]; j++){
-					drawResource(gameCard, resource, xOffset, yOffset, miniIconSize, miniIconSize);
+					drawFactory.drawIcon(gameCard, resource, xOffset, yOffset, miniIconSize, miniIconSize);
 					xOffset += spacer + miniIconSize;
 				}
 			}
 		}
 	}
 
-	function drawResource(gameCard, resource, x, y,iconSize){
-		gameCard.draw(resource,x,y,iconSize, iconSize, iconSize)
-
-	}
-
-	function drawGold(gameCard, numGold, x,y, iconSize){
-		gameCard.draw('Gold', x, y, iconSize, iconSize)
-		var number = gameCard.game.make.text(0, 0, numGold,
-			{font: "bold "+ iconSize/20 +"px", fill:'black'});
-		gameCard.draw(number, x + (iconSize - number.width)/2, y + (iconSize - number.height))
-	}
 	return drawCost;
 })

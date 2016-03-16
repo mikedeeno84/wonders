@@ -20,7 +20,7 @@ app.factory('create', function($http, cardBuilder) {
       name: "Theater",
       age: 1,
       color: "Blue",
-      cost: [],
+      cost: ['Gold'],
       arms: 0,
       link: "Mask",
       vp: 3
@@ -39,12 +39,15 @@ app.factory('create', function($http, cardBuilder) {
     }
 }
     var radius = 6;
+    var cardWidth = 145;
+    var cardHeight = 200;
+
     // example of producing a card
-    var rCard = cardBuilder(game, sampleRed, 150, 200, radius);
+    var rCard = cardBuilder(game, sampleRed, cardWidth, cardHeight, radius);
     game.add.image(game.world.centerX, (game.world.centerY) / 2, rCard)
-    var bCard = cardBuilder(game, sampleBlue, 150, 200, radius)
+    var bCard = cardBuilder(game, sampleBlue, cardWidth, cardHeight, radius)
     game.add.image(game.world.centerX + 170, (game.world.centerY) / 2, bCard)
-    var brCard = cardBuilder(game, sampleBrown, 150, 200, radius)
+    var brCard = cardBuilder(game, sampleBrown, cardWidth, cardHeight, radius)
     game.add.image(game.world.centerX - 170, (game.world.centerY) / 2, brCard)
 
   }
