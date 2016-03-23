@@ -23,7 +23,7 @@ app.factory('cardBuilder', function(drawFactory, drawCost, shapeFactory, redCard
 
     // draws the basic rectangle that makes up all cards    
 
-    shapeFactory.drawRounded(gameCard, width, height, 0, 0, radius, 'gray')
+    shapeFactory.drawRounded(gameCard, width, height, 0, 0, radius, '#F1ECD7')
     
     var name = game.make.text(0, 0, gameCard.cardInfo.name, { fontSize: nameFontSize, fill: 'black' });
     gameCard.draw(name, (width - name.width)/2, gameCard.height - gameCard.height/8);
@@ -34,13 +34,11 @@ app.factory('cardBuilder', function(drawFactory, drawCost, shapeFactory, redCard
 
     if (cardInfo.cost.length) {
       drawCost(gameCard, cardInfo.cost, width, bannerHeight)
-      console.log(bannerHeight)
     };
 
     if (cardInfo.backlink) {
       var miniIconsize = width/8;
       var spacer = miniIconsize/3
-      console.log("x: " + miniIconsize/3, "y: " + (bannerHeight + miniIconsize + spacer * 1.5), "iconSize: " + miniIconsize)
       drawFactory.drawIcon(gameCard, cardInfo.backlink, miniIconsize/3, bannerHeight + miniIconsize + spacer*1.5, miniIconsize);
     }
     return gameCard;

@@ -50,22 +50,23 @@ app.factory('create', function($http, cardBuilder, fetchFactory) {
     //     },
     //     vp: 3
     // }
-    var sampleYellow2 = {
-      name: "Stone Reserve",
-      age: 1,
-      color: "Yellow",
-      cost: ['Gold', 'Gold', 'Gold'],
-      arms: 0,
-      supply: ['Stone', 'Wood']
-    }
-    var sampleGreen = {
-      name: "Stone Reserve",
-      age: 1,
-      color: "Green",
-      cost: ['Gold', 'Gold', 'Gold'],
-      arms: 0,
-      supply: ['Stone', 'Wood']
-    }
+
+    // var sampleYellow2 = {
+    //   name: "Stone Reserve",
+    //   age: 1,
+    //   color: "Yellow",
+    //   cost: ['Gold', 'Gold', 'Gold'],
+    //   arms: 0,
+    //   supply: ['Stone', 'Wood']
+    // }
+    // var sampleGreen = {
+    //   name: "Stone Reserve",
+    //   age: 1,
+    //   color: "Green",
+    //   cost: ['Gold', 'Gold', 'Gold'],
+    //   arms: 0,
+    //   supply: ['Stone', 'Wood']
+    // }
 
 
     var radius = 4;
@@ -98,11 +99,11 @@ app.factory('create', function($http, cardBuilder, fetchFactory) {
 
 
 
-    fetchFactory.getAgeIII()
-      .then(function(AgeIII) {
-        game.AgeIII = AgeIII;
-        for (var i = 0; i < AgeIII.length; i++) {
-          var card = cardBuilder(game, game.AgeIII[i], cardWidth, cardHeight, radius);
+    fetchFactory.getAgeII()
+      .then(function(AgeII) {
+        game.AgeII = AgeII;
+        for (var i = 0; i < AgeII.length; i++) {
+          var card = cardBuilder(game, game.AgeII[i], cardWidth, cardHeight, radius);
           game.add.image(x, y, card);
           x += cardWidth + 20;
           if (x >= (width - cardWidth)) {

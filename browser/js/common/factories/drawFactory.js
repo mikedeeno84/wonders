@@ -2,7 +2,9 @@ app.factory('drawFactory', function(shapeFactory){
 	var drawFactory = {};
 
 	drawFactory.drawGold = function(gameCard, numGold, x,y, iconSize){
-		gameCard.draw('Gold', x, y, iconSize, iconSize)
+		
+		gameCard.draw('Gold', x, y, iconSize, iconSize);
+
 		var number = gameCard.game.make.text(0, 0, numGold + "",
 			{fontSize: Math.floor(iconSize/2), fill:'black'});
 		gameCard.draw(number, (x + (iconSize - number.width)/2), (y + (iconSize - number.height/1.5)))
@@ -26,21 +28,21 @@ app.factory('drawFactory', function(shapeFactory){
 		}
 
 		else{
-			var diff = width - xOffset;
 			gameCard.draw('Wreath', width - xOffset, yOffset, iconSize, iconSize)
 			gameCard.draw(vpText, width - xOffset + (iconSize/2 - vpText.width/2) , height/2 - vpText.height/2);
 		}
+
 	}
 
 	drawFactory.drawSpecial = function(gameCard,x,y,iconSize, type){
-		var drawFactory = this;
+
 		if (type !== 'Wonder') {
 			shapeFactory.drawRounded(gameCard, iconSize*.8,iconSize, x, y, 4, type.toLowerCase(), 'white')	
 		}
 		else{
-			drawFactory.drawIcon(gameCard, 'Pyramid', x, y, iconSize)
+			this.drawIcon(gameCard, 'Pyramid', x, y, iconSize)
 		}
-		drawFactory.drawGold(gameCard, 1, x - (iconSize*1/4) , y + (iconSize*5/8), iconSize/2)
+		this.drawGold(gameCard, 1, x - (iconSize*1/4) , y + (iconSize*5/8), iconSize/2)
 	}
 
 	return drawFactory;
