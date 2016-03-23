@@ -13,7 +13,6 @@ module.exports = [{
     color: "Yellow",
     cost: ['Gold', 'Gold', 'Gold'],
     arms: 0,
-    gold: 4,
     discount:['Stone'],
 }, {
     name: "Clay Reserve",
@@ -21,7 +20,6 @@ module.exports = [{
     color: "Yellow",
     cost: ['Gold', 'Gold', 'Gold'],
     arms: 0,
-    gold: 4,
     discount:['Clay'],
 }, {
     name: "Wood Reserve",
@@ -29,6 +27,5 @@ module.exports = [{
     color: "Yellow",
     cost: ['Gold', 'Gold', 'Gold'],
     arms: 0,
-    gold: 4,
     discount:['Wood'],
 }, ]

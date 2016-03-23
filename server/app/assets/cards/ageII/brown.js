@@ -20,7 +20,7 @@ module.exports = [{
     effect: {
         result: {
             quantity: 2,
-            resource: "Brick"
+            resource: "Clay"
         }
     },
     vp: 0,

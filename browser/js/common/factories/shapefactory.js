@@ -12,9 +12,14 @@ app.factory('shapeFactory', function(){
 		ctx.closePath();
 	}
 
-	shapeFactory.drawHalfRound = function(gameCard, width, height, x, y, radius, color){
+	shapeFactory.drawHalfRound = function(gameCard, width, height, x, y, radius, color, strokeColor){
 		var ctx = gameCard.ctx;
 		
+		if (strokeColor) {
+			ctx.strokeStyle = strokeColor;
+			ctx.lineWidth = 8;
+		}
+
 		ctx.beginPath();
 
 		ctx.moveTo(x + radius,y);
@@ -26,14 +31,21 @@ app.factory('shapeFactory', function(){
   	ctx.quadraticCurveTo(x, y, x + radius, y);
 		ctx.fillStyle = color;
 		ctx.fill();
+
+		if (strokeColor) ctx.stroke();
   	ctx.closePath();
 
 	}
 
-	shapeFactory.drawRounded = function(gameCard, width, height, x, y, radius, color){
+	shapeFactory.drawRounded = function(gameCard, width, height, x, y, radius, color, strokeColor){
 		
 		var ctx = gameCard.ctx;
 		// console.log(ctx)
+
+		if (strokeColor) {
+			ctx.strokeStyle = strokeColor;
+			ctx.lineWidth = 4;
+		}
 		ctx.beginPath();
 		ctx.moveTo(x + radius, y);
 		ctx.lineTo(x + width - radius, y);
@@ -46,6 +58,8 @@ app.factory('shapeFactory', function(){
   	ctx.quadraticCurveTo(x, y, x + radius, y);
 		ctx.fillStyle = color;
 		ctx.fill();
+
+		if (strokeColor) ctx.stroke();
   	ctx.closePath();
 
 	}

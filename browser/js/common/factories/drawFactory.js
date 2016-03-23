@@ -1,11 +1,11 @@
-app.factory('drawFactory', function(){
+app.factory('drawFactory', function(shapeFactory){
 	var drawFactory = {};
-	
+
 	drawFactory.drawGold = function(gameCard, numGold, x,y, iconSize){
 		gameCard.draw('Gold', x, y, iconSize, iconSize)
-		var number = gameCard.game.make.text(0, 0, numGold,
-			{font: "bold "+ iconSize/20 +"px", fill:'black'});
-		gameCard.draw(number, x + (iconSize - number.width)/2, y + (iconSize - number.height))
+		var number = gameCard.game.make.text(0, 0, numGold + "",
+			{fontSize: Math.floor(iconSize/2), fill:'black'});
+		gameCard.draw(number, (x + (iconSize - number.width)/2), (y + (iconSize - number.height/1.5)))
 	}
 
 	drawFactory.drawIcon = function drawIcon(gameCard, icon, x, y, iconSize){
@@ -18,7 +18,7 @@ app.factory('drawFactory', function(){
 		var yOffset = Math.floor((height - iconSize)/2)
 		var numVp = gameCard.cardInfo.vp;
 
-		var vpText = game.make.text(0,0, numVp, {font: vpFontSize +"px serif", fill:'#1AA1FD'});
+		var vpText = game.make.text(0,0, numVp, {fontSize: vpFontSize, fill:'#1AA1FD'});
 		
 		if (!xOffset) {
 			gameCard.draw('Wreath', width/2 - (iconSize/2), yOffset, iconSize, iconSize)
@@ -31,5 +31,17 @@ app.factory('drawFactory', function(){
 			gameCard.draw(vpText, width - xOffset + (iconSize/2 - vpText.width/2) , height/2 - vpText.height/2);
 		}
 	}
+
+	drawFactory.drawSpecial = function(gameCard,x,y,iconSize, type){
+		var drawFactory = this;
+		if (type !== 'Wonder') {
+			shapeFactory.drawRounded(gameCard, iconSize*.8,iconSize, x, y, 4, type.toLowerCase(), 'white')	
+		}
+		else{
+			drawFactory.drawIcon(gameCard, 'Pyramid', x, y, iconSize)
+		}
+		drawFactory.drawGold(gameCard, 1, x - (iconSize*1/4) , y + (iconSize*5/8), iconSize/2)
+	}
+
 	return drawFactory;
 })

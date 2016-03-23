@@ -4,12 +4,7 @@ module.exports = [{
     age: 2,
     color: "Gray",
     cost: [],
-    effect: {
-        result: [{
-            quantity: 1,
-            resource: "Glass"
-        }]
-    },
+    supply: ["Glass"],
     vp: 0,
     arms: 0,
 }, {
@@ -17,12 +12,7 @@ module.exports = [{
     age: 2,
     color: "Gray",
     cost: [],
-    effect: {
-        result: [{
-            quantity: 1,
-            resource: "Papyrus"
-        }]
-    },
+    supply: ["Papyrus"],
     vp: 0,
     arms: 0,
 }]

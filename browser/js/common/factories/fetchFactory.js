@@ -1,29 +1,35 @@
+'use strict'
 app.factory('fetchFactory', function($http) {
 
   var fetchFactory = {};
 
-  fetchFactory.getWonderCards = function() {
+  fetchFactory.getWonder = function() {
     return $http.get('/api/cards/wonders')
       .then(res => res.data);
   }
 
-  fetchFactory.getAgeICards = function() {
+  fetchFactory.getAgeI = function() {
     return $http.get('/api/cards/ageI')
       .then(res => res.data);
   }
 
-  fetchFactory.getAgeIICards = function() {
+  fetchFactory.getAgeII = function() {
     return $http.get('/api/cards/ageII')
       .then(res => res.data);
   }
 
-  fetchFactory.getAgeIIICards = function() {
+  fetchFactory.getAgeIII = function() {
     return $http.get('/api/cards/ageIII')
       .then(res => res.data);
   }
 
-  fetchFactory.getGuildCards = function() {
-    return $http.get('/api/cards/guild')
+  fetchFactory.getGuilds = function() {
+    return $http.get('/api/cards/guilds')
+      .then(res => res.data);
+  }
+
+  fetchFactory.getTokens = function() {
+    return $http.get('/api/cards/tokens')
       .then(res => res.data);
   }
 
