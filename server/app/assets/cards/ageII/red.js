@@ -36,5 +36,6 @@ module.exports = [{
     cost: ['Clay', 'Clay', 'Stone'],
     vp: 0,
     arms: 2,
+    color: "Red",
     link: "Helmet",
 }]

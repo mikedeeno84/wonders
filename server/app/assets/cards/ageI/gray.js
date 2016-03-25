@@ -4,14 +4,7 @@ module.exports = [{
     age: 1,
     color: "Gray",
     cost: ['Gold'],
-    effect: {
-        cost: ['Gold'],
-        tradeOverride: false,
-        result: [{
-            quantity: 1,
-            resource: "Glass"
-        }]
-    },
+    supply: ["Glass"],
     vp: 0,
     arms: 0,
 }, {
@@ -19,14 +12,7 @@ module.exports = [{
     age: 1,
     color: "Gray",
     cost: ['Gold'],
-    effect: {
-        cost: ['Gold'],
-        tradeOverride: false,
-        result: [{
-            quantity: 1,
-            resource: "Papyrus"
-        }]
-    },
+    supply: ["Papyrus"],
     vp: 0,
     arms: 0,
 }]

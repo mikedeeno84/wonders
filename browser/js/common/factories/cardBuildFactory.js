@@ -1,24 +1,26 @@
-app.factory('cardBuilder', function(redCardFactory) {
-  var buildByColor = {
-    Red: redCardFactory
-  }
-
-  return function(game, cardInfo, width, height) {
-    var iconSize = 25;
+app.factory('cardBuilder', function(buildingCardBuilder, drawFactory, shapeFactory) {
+  
+  return function(game, cardInfo, width, height, radius) {
     var gameCard = game.make.bitmapData(width, height);
-    // draws the basic rectangle that makes up all cards
     gameCard.cardInfo = cardInfo;
-    gameCard.ctx.beginPath();
-    gameCard.ctx.rect(0, 0, width, height)
-    gameCard.ctx.fillStyle = 'white'
-    gameCard.ctx.fill()
-    gameCard.ctx.lineWidth = 1;
-    gameCard.ctx.stroke();
-    gameCard.ctx.closePath();
 
-    // passes it to color specific card builder function that will 
-    // draw the card according to color based specifications
-    buildByColor[cardInfo.color](gameCard, width, height * .3, iconSize);
+    // draws the basic rectangle that makes up all cards, and print the card names. 
+    shapeFactory.drawRounded(gameCard, width, height, 0, 0, radius, '#F1ECD7')
+    var nameFontSize = width / 10;
+    var name = game.make.text(0, 0, gameCard.cardInfo.name, { fontSize: nameFontSize, fill: 'black' });
+    if (name.width > width) name.fontSize *= .70
+    gameCard.draw(name, (width - name.width) / 2, gameCard.height - gameCard.height / 6.5);
+
+    // if the given card has a color, it should be run through the building card builder function
+    if (cardInfo.color){
+      buildingCardBuilder(gameCard, radius);
+    }
+    else{
+      // buildWonder(gameCard, radius);
+    }
+
+
+
     return gameCard;
   }
 })

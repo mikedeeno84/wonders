@@ -5,9 +5,7 @@ module.exports = [{
     color: "Yellow",
     cost: [],
     arms: 0,
-    immediate: [{
-        Gold: 4
-    }],
+    gold: 4,
     link: "Vase"
 }, {
     name: "Stone Reserve",
@@ -15,46 +13,19 @@ module.exports = [{
     color: "Yellow",
     cost: ['Gold', 'Gold', 'Gold'],
     arms: 0,
-    immediate: [{
-        Gold: 4
-    }],
-    effect: {
-        cost: ['Gold'],
-        result: [{
-            quantity: 1,
-            resource: "Stone"
-        }]
-    }
+    discount:['Stone'],
 }, {
     name: "Clay Reserve",
     age: 1,
     color: "Yellow",
     cost: ['Gold', 'Gold', 'Gold'],
     arms: 0,
-    immediate: [{
-        Gold: 4
-    }],
-    effect: {
-        cost: ['Gold'],
-        result: [{
-            quantity: 1,
-            resource: "Clay"
-        }]
-    }
+    discount:['Clay'],
 }, {
     name: "Wood Reserve",
     age: 1,
     color: "Yellow",
     cost: ['Gold', 'Gold', 'Gold'],
     arms: 0,
-    immediate: [{
-        Gold: 4
-    }],
-    effect: {
-        cost: ['Gold'],
-        result: [{
-            quantity: 1,
-            resource: "Wood"
-        }]
-    }
+    discount:['Wood'],
 }, ]

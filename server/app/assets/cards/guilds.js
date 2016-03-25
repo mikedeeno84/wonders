@@ -45,7 +45,7 @@ module.exports = [{
         if: 'Greater'
     }]
 }, {
-    name: "Magistrates's Guild",
+    name: "Magistrate's Guild",
     age: 3,
     color: "Purple",
     cost: ['Wood', 'Wood', 'Clay', 'Papyrus'],
@@ -59,7 +59,7 @@ module.exports = [{
         if: 'Greater'
     }]
 }, {
-    name: "Scientiest's Guild",
+    name: "Scientist's Guild",
     age: 3,
     color: "Purple",
     cost: ['Clay', 'Clay', 'Wood', 'Wood'],
@@ -90,7 +90,7 @@ module.exports = [{
         if: 'Greater'
     }]
 }, {
-    name: "Tacticians's Guild",
+    name: "Tactician's Guild",
     age: 3,
     color: "Purple",
     cost: ['Stone', 'Stone', 'Clay', 'Papyrus'],

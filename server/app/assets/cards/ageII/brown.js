@@ -5,10 +5,10 @@ module.exports = [{
     color: "Brown",
     cost: ['Gold', 'Gold'],
     effect: {
-        result: [{
+        result: {
             quantity: 2,
             resource: "Wood"
-        }]
+        }
     },
     vp: 0,
     arms: 0,
@@ -18,10 +18,10 @@ module.exports = [{
     color: "Brown",
     cost: ['Gold', 'Gold'],
     effect: {
-        result: [{
+        result: {
             quantity: 2,
-            resource: "Brick"
-        }]
+            resource: "Clay"
+        }
     },
     vp: 0,
     arms: 0,
@@ -31,10 +31,10 @@ module.exports = [{
     color: "Brown",
     cost: ['Gold', 'Gold'],
     effect: {
-        result: [{
+        result: {
             quantity: 1,
             resource: "Stone"
-        }]
+        }
     },
     vp: 0,
     arms: 0,

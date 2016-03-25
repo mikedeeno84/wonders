@@ -29,4 +29,5 @@ module.exports = [{
     vp: 0,
     arms: 1,
     link: "Rook",
+    color: "Red",
 }]
