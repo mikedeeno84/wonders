@@ -20,7 +20,7 @@ app.factory('drawFactory', function(shapeFactory){
 		var yOffset = Math.floor((height - iconSize)/2)
 		var numVp = gameCard.cardInfo.vp;
 
-		var vpText = game.make.text(0,0, numVp, {fontSize: vpFontSize, fill:'#1AA1FD'});
+		var vpText = game.make.text(0,0, numVp, {fontSize: vpFontSize, fill:'white'});
 		
 		if (!xOffset) {
 			gameCard.draw('Wreath', width/2 - (iconSize/2), yOffset, iconSize, iconSize)

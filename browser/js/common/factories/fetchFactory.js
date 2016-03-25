@@ -3,7 +3,7 @@ app.factory('fetchFactory', function($http) {
 
   var fetchFactory = {};
 
-  fetchFactory.getWonder = function() {
+  fetchFactory.getWonders = function() {
     return $http.get('/api/cards/wonders')
       .then(res => res.data);
   }

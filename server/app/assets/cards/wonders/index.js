@@ -38,7 +38,7 @@ module.exports = [{
     	supply:['Wood', 'Stone', 'Clay']
     }
 }, {
-    name: 'The Haning Gardens',
+    name: 'The Hanging Gardens',
     vp: 3,
     gold: 6,
     repeatTurn: true

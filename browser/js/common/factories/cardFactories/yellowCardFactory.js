@@ -1,6 +1,6 @@
 app.factory('yellowCardFactory', function(shapeFactory, drawCost, drawFactory) {
-  function yellowCard(gameCard, width, height, iconSize) {
-    shapeFactory.drawHalfRound(gameCard, width, height, 0, 0, 6, 'yellow')
+  function yellowCard(gameCard, width, height, iconSize, radius) {
+    shapeFactory.drawHalfRound(gameCard, width, height, 0, 0, radius, '#ffd800')
 
     var cardInfo = gameCard.cardInfo;
     var numVp = cardInfo.vp;

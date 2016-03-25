@@ -1,6 +1,6 @@
 app.factory('grayCardFactory', function(shapeFactory, drawFactory) {
-  function grayCard(gameCard, width, height, iconSize) {
-    shapeFactory.drawHalfRound(gameCard, width, height, 0, 0, 6, 'gray');
+  function grayCard(gameCard, width, height, iconSize, radius) {
+    shapeFactory.drawHalfRound(gameCard, width, height, 0, 0, radius, 'gray');
 
     var slash = gameCard.game.make.text(0, 0, '/', { fontSize: iconSize / 2, fill: 'gray' })
 

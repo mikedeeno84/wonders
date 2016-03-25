@@ -1,7 +1,7 @@
 app.factory('greenCardFactory', function(shapeFactory, drawCost, drawFactory) {
-  function greenCard(gameCard, width, height, iconSize) {
+  function greenCard(gameCard, width, height, iconSize, radius) {
     
-    shapeFactory.drawHalfRound(gameCard, width, height, 0, 0, 6, 'green')
+    shapeFactory.drawHalfRound(gameCard, width, height, 0, 0, radius, 'green')
     
     var cardInfo = gameCard.cardInfo;
     
@@ -9,9 +9,11 @@ app.factory('greenCardFactory', function(shapeFactory, drawCost, drawFactory) {
     var numIcons = 1;
 
     var printLink = false;
-    
-    if (cardInfo.vp) numIcons++;
-
+    var printVp = false;
+    if (cardInfo.vp) {
+      numIcons++;
+      printVp = true;
+    }
     if(cardInfo.link) {
       numIcons++;
       printLink = true;
@@ -22,11 +24,12 @@ app.factory('greenCardFactory', function(shapeFactory, drawCost, drawFactory) {
     var xOffset = spacer + iconSize;
 
     for (var i = 0; i < numIcons; i++) {
-      if (i === 0 && numVp) {
-        drawFactory.drawVp(gameCard, width, height, iconSize, xOffset);
-      } else if(printLink){
+      if (printLink) {
         drawFactory.drawIcon(gameCard, gameCard.cardInfo.link, width - xOffset, Math.floor((height - iconSize/1.25) / 2), iconSize/1.25)
         printLink = false;
+      } else if(printVp){
+        drawFactory.drawVp(gameCard, width, height, iconSize, xOffset);
+        printVp = false;
       } else {
         drawFactory.drawIcon(gameCard, cardInfo.symbol, width - xOffset, yOffset, iconSize)
       }

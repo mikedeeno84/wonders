@@ -1,6 +1,6 @@
 app.factory('brownCardFactory', function(shapeFactory){
-	function brownCard(gameCard, width, height, iconSize){
-		shapeFactory.drawHalfRound(gameCard, width, height, 0, 0, 6, '#6E2F1D')
+	function brownCard(gameCard, width, height, iconSize, radius){
+		shapeFactory.drawHalfRound(gameCard, width, height, 0, 0, radius, '#6E2F1D')
 		var game = gameCard.game
 		var cardInfo = gameCard.cardInfo
 		var cardEffect = cardInfo.effect.result;

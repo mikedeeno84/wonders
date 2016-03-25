@@ -8,7 +8,7 @@ app.config(function($stateProvider) {
 })
 
 app.controller('gameController', function($scope, create, update, preload) {
-  $scope.game = new Phaser.Game(810, 1080, Phaser.AUTO, 'wonderBoard', {
+  $scope.game = new Phaser.Game(1080, 810, Phaser.AUTO, 'wonderBoard', {
     preload: preload,
     create: create,
     update: update
