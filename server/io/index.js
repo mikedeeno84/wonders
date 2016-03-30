@@ -1,23 +1,42 @@
 'use strict';
 var socketio = require('socket.io');
 var io = null;
+var numPlayers = 0;
 
-module.exports = function (server) {
-		var numPlayers = 0;
-    if (io) return io;
+module.exports = function(server) {
+  var gameStarted = false;
 
-    io = socketio(server);
+  if (io) return io;
 
-    io.on('connection', function () {
-    	numPlayers++;
-    	if(numPlayers>0){
-    		io.emit('join', {hi:'hi'});
-    	}
-    	console.log('socket')
+  io = socketio(server);
 
-        // Now have access to socket, wowzers!
-    });
-    
-    return io;
+  io.on('connection', function(socket) {
+    numPlayers++;
+    if (numPlayers === 1) {
+      io.emit('join', {
+        gameStarted: gameStarted,
+        numPlayers: numPlayers
+      });
+    } else if (numPlayers >= 2) {
+      gameStarted = true;
+      io.emit('gameStart', {
+        gameStarted: true,
+        numPlayers: numPlayers, time:Date.now()
+      })
+    }
+    // if (gameStarted) {io.emit('dealRound')}
+
+    // Now have access to socket, wowzers!
+    socket.on('dealRound', function() {
+      io.emit('dealCards')
+    })
+
+    socket.on('disconnect', function() {
+      numPlayers--;
+    })
+
+  });
+
+  return io;
 
 };

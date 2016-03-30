@@ -4,6 +4,9 @@ app.factory('preload', function() {
     var game = this;
     // game.load.image('table', '/assets/game_bg.png');
 
+    // load menus
+    game.load.image('Wreath', '/assets/menus/start.png');
+
     // load resources
     game.load.image('Wreath', '/assets/wreath.png');
     game.load.image('Shield', '/assets/arms.png');
