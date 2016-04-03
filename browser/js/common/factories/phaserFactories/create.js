@@ -19,30 +19,37 @@ app.factory('create', function(fetchFactory, cardBuilder) {
   return function() {
     var game = this;
 
-    function cardClicked(sprite) {
-      console.log(sprite.x, sprite.y)
-      var oldDisplayed = game.displayed;
-      if (oldDisplayed) {
-        // var cardToReplace = cardBuilder(game, oldDisplayed.info, oldDisplayed.width / 2, oldDisplayed.height / 2, radius);
-        // var backInPlace = makeCardSprite(oldDisplayed.original[0], oldDisplayed.original[1], cardToReplace);
-        // console.log(backInPlace.x, backInPlace.y)
-        oldDisplayed.x = oldDisplayed.original[0];
-        oldDisplayed.y = oldDisplayed.original[1];
-      }
-      // sprite.kill();
-      var newCard = cardBuilder(game, sprite.info, sprite.width * 2, sprite.height * 2, radius * 2);
-      var newSprite = makeCardSprite(width / 2 - newCard.width / 2, height / 2 - newCard.height / 2, newCard);
-      game.displayed = newSprite;
-
-    }
     var socket = io(window.location.origin);
     game.socket = socket;
 
-    function makeCardSprite(x, y, card) {
+    function cardClicked(sprite) {
+      console.log(sprite)
+      var oldDisplayed = game.displayed;
+      sprite.kill();
+      if (oldDisplayed) {
+        console.log(oldDisplayed.original)
+        var cardToPutBack = cardBuilder(game, oldDisplayed.info, oldDisplayed.width/2, oldDisplayed.height/2, radius);
+        var backInPlace = makeCardSprite(oldDisplayed.original[0], oldDisplayed.original[1], cardToPutBack);
+        oldDisplayed.kill();
+      }
+      var newCard = cardBuilder(game, sprite.info, sprite.width*2, sprite.height*2, radius * 2);
+      game.displayed = makeCardSprite(width / 2 - newCard.width / 2, height / 2 - newCard.height / 2, newCard, true, sprite.original);
+
+    }
+
+    function makeCardSprite(x, y, card, displayCard, oldXY) {
       var sprite = game.add.sprite(x, y, card)
       sprite.info = card.cardInfo;
-      sprite.events.onInputDown.add(cardClicked, this);
-      sprite.original = [x, y];
+      if (!displayCard) {
+        sprite.events.onInputDown.add(cardClicked, this);
+        sprite.original = [x, y];
+      }
+      else{
+        sprite.original = oldXY;
+        sprite.events.onInputDown.add(function(sprite){
+          sprite.kill();
+        }, this);
+      }
       sprite.inputEnabled = true;
       return sprite;
     }
@@ -71,6 +78,7 @@ app.factory('create', function(fetchFactory, cardBuilder) {
             y += (cardHeight + 20);
           }
         }
+        console.log(x,y)
       }
     }
 
